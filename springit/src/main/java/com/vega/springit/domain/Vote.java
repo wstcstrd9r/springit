@@ -1,4 +1,4 @@
-package com.vega.springit.model;
+package com.vega.springit.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,14 +11,13 @@ import lombok.NonNull;
 @Entity
 @Data
 @NoArgsConstructor
-public class Comment {
-
+public class Vote {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
 	@NonNull
-	private String body;
+	private int vote;
 	
-	
-	
+
 }
