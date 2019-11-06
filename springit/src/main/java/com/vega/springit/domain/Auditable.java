@@ -22,7 +22,7 @@ public abstract class Auditable {
     private String createdBy;
 
     @CreatedDate
-    private LocalDateTime createdDate;
+    private LocalDateTime creationDate;
 
     @LastModifiedBy
     private String lastModifiedBy;
@@ -38,12 +38,12 @@ public abstract class Auditable {
         this.createdBy = createdBy;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
+    public void setCreationDate(LocalDateTime createdDate) {
+        this.creationDate = createdDate;
     }
 
     public String getLastModifiedBy() {

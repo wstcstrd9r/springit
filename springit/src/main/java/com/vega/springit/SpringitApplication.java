@@ -2,9 +2,13 @@ package com.vega.springit;
 
 import java.util.ArrayList;
 
+import org.ocpsoft.prettytime.PrettyTime;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +23,8 @@ import com.vega.springit.repository.LinkRepository;
 
 @SpringBootApplication
 @EnableConfigurationProperties(SpringitProperties.class)
-@EnableJpaAuditing
+//@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class,WebMvcAutoConfiguration.class })
+//@EnableJpaAuditing
 public class SpringitApplication {
 
 	public static void main(String[] args) {
@@ -28,7 +33,20 @@ public class SpringitApplication {
 	}
 	
 	@Bean
-	//@Profile("dev")
+	PrettyTime prettyTime(){
+		return new PrettyTime();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+	/*@Bean
+	@Profile("dev")
 	CommandLineRunner runner(LinkRepository linkRepository, CommentRepository commentRepository){
 		return args -> {
 			System.out.println("This is something that we only do it dev." );
@@ -41,18 +59,18 @@ public class SpringitApplication {
 			
 			System.out.println("We just inserted a Link and a comment");
 			System.out.println("========================================================");
-			
+		
  
-			/*System.out.println(link.getTitle() + " 888888");
+			System.out.println(link.getTitle() + " 888888");
 			Link firstLink = linkRepository.findByTitle("Getting Started with Spring Boot2");
 			System.out.println(firstLink.getTitle() + " firstLink");
 			ArrayList<Link> firstLinkLike = new ArrayList<Link>();
 			firstLinkLike.addAll(linkRepository.findByTitleLike("%Started%"));
 			Link link1 = firstLinkLike.get(0);
-			System.out.println(link1.getTitle() + "test"); */
+			System.out.println(link1.getTitle() + "test"); 
 
 		};
-	}
+	} */
 	
 
 }
