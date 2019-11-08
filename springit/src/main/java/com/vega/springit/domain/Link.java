@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,14 +23,20 @@ import com.vega.springit.service.BeanUtil;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Link  extends Auditable {
 	
 	@Id
@@ -45,9 +52,14 @@ public class Link  extends Auditable {
 	@URL(message = "Please enter a valid url.")
 	private String url;
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy="link")
 	private List<Comment> comments = new ArrayList<Comment>();
+	
+	@OneToMany(mappedBy = "link")
+	private List<Vote> votes = new ArrayList<>();
+
+	private int voteCount = 0;
 	
 	/*public Link(String title, String url){
 		this.title = title;
