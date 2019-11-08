@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         .formLogin()
             .and()
         .httpBasic(); */
-	    	 http
+	    	 /*http
 	         .authorizeRequests()
 	             .requestMatchers(EndpointRequest.to("info")).permitAll()
 	             .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ADMIN")
@@ -48,7 +48,28 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	             .antMatchers("/").permitAll()
 	             .antMatchers("/link/submit").hasRole("USER")
 	             .and()
-	         .formLogin();
+	         .formLogin();*/
+	    	http
+	        .authorizeRequests()
+	            .requestMatchers(EndpointRequest.to("info")).permitAll()
+	            .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ACTUATOR")
+	            .antMatchers("/actuator/").hasRole("ACTUATOR")
+	            .antMatchers("/link/submit").hasRole("USER")
+	            .antMatchers("/link/**").permitAll()
+	            .antMatchers("/").permitAll()
+	            .antMatchers("/h2-console/**").permitAll()
+	            .and()
+	        .formLogin()
+	            .loginPage("/login").permitAll()
+	            .usernameParameter("email")
+	            .and()
+	            .logout()
+	            .and()
+	            .rememberMe();
+	        //.and()
+	        	//.csrf().disable()
+	        	//.headers().frameOptions().disable();
+	            //.usernameParameter("email");
 		
 	}
 	
