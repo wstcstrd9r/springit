@@ -31,12 +31,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Data
+//@Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Getter
 @Setter
-@ToString
+//@ToString
 public class Link  extends Auditable {
 	
 	@Id
