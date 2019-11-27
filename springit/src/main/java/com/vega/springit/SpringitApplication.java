@@ -14,6 +14,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 import com.vega.springit.config.SpringitProperties;
@@ -26,6 +27,7 @@ import com.vega.springit.repository.LinkRepository;
 @EnableConfigurationProperties(SpringitProperties.class)
 //@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class,WebMvcAutoConfiguration.class })
 //@EnableJpaAuditing
+@EnableTransactionManagement
 public class SpringitApplication {
 
 	public static void main(String[] args) {

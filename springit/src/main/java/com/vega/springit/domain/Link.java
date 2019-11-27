@@ -12,6 +12,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 
@@ -60,6 +61,10 @@ public class Link  extends Auditable {
 	private List<Vote> votes = new ArrayList<>();
 
 	private int voteCount = 0;
+	
+	@ManyToOne
+	private User user;
+	
 	
 	/*public Link(String title, String url){
 		this.title = title;
